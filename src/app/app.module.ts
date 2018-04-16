@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CounterPageModule } from '../pages/counter/counter.module';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CounterPageModule } from '../pages/counter/counter.module';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     CounterPageModule,
-    ConfigPageModule
+    ConfigPageModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
