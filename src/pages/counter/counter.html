@@ -14,5 +14,17 @@
 
 
 <ion-content padding>
+  <ion-list>
 
+    <ion-item>
+      <ion-label floating>Quantidade de pontos de ação:</ion-label>
+      <ion-input type="text">{{ valorPA }}</ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Ordem de contagem</ion-label>
+      <ion-input type="text">{{ isOrderAsc? 'crescente' : 'descrescente'}}</ion-input>
+    </ion-item>
+  
+  </ion-list>
 </ion-content>

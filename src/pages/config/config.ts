@@ -26,14 +26,14 @@ export class ConfigPage {
 
   validarPA() {
     if(this.valorPA <= 0 || this.valorPA > 20) {
-      this.presentAlert('Atenção', 'Escolha um valor de 1 até 20 para os pontos de ação')
+      this.exibirMensagem('Atenção', 'Escolha um valor de 1 até 20 para os pontos de ação')
       this.limparFiltro();
     }
     this.gravarConfig();
     
   }
 
-  presentAlert(titulo: string, subtitulo: string) {
+  exibirMensagem(titulo: string, subtitulo: string) {
     let alert = this.alertCtrl.create({
       title: titulo,
       subTitle: subtitulo,
@@ -47,20 +47,23 @@ export class ConfigPage {
     this.isOrderAsc = true;
   }
 
-  gravarConfig(): void {
-    debugger
+  gravarConfig(): void {    
     // set a key/value
     this.storage.set('valorPA', this.valorPA);
     this.storage.set('isOrderAsc', this.isOrderAsc);
 
     // Or to get a key/value pair
     this.storage.get('valorPA').then((val) => {
-      console.log('Valor gravado para PA: ', val);
+      //console.log('Valor gravado para PA: ', val);
     });
 
     this.storage.get('isOrderAsc').then((val) => {
-      console.log('Ordenar Crescente ? ', val);
+      //console.log('Ordenar Crescente ? ', val);
     });
+
+    this.exibirMensagem('OK', 
+    `Valores salvos com sucesso: ${this.valorPA} pontos de ação,
+     e ordem de exibição ${this.isOrderAsc? 'crescente' : 'descrescente'}.`);
   }
 
 }

@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the CounterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CounterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public valorPA = null;
+  public isOrderAsc: true;
+
+  constructor(  
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private storage: Storage) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CounterPage');
+  ionViewDidLoad() {    
+    this.storage.get('valorPA').then((val) => {
+      this.valorPA = val;
+    });
+    this.storage.get('isOrderAsc').then((val) => {
+      this.isOrderAsc = val;
+    });
+
   }
 
 }
