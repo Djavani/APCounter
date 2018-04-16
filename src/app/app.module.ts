@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CounterPageModule } from '../pages/counter/counter.module';
 import { IonicStorageModule } from '@ionic/storage';
+import { LocalStorageService } from './services/localStorageService';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalStorageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

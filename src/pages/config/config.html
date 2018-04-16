@@ -11,15 +11,15 @@
   <ion-list>
     <ion-item>
       <ion-label> Ordem de contagem Crescente</ion-label>
-      <ion-toggle checked="true" [(ngModel)]="isOrderAsc"></ion-toggle>
+      <ion-toggle checked="true" [(ngModel)]="actionPoint2.isOrderAsc"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label floating>Quantidade de Pontos de Ação</ion-label>
       <ion-input text-center 
-        type="number" min="1" max="20" [(ngModel)]="valorPA"></ion-input>
+        type="number" min="1" max="20" [(ngModel)]="actionPoint2.valorPA"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-range min="1" max="20" [(ngModel)]="valorPA"  pin="true" color="danger" snaps="true">
+      <ion-range min="1" max="20" [(ngModel)]="actionPoint2.valorPA"  pin="true" color="danger" snaps="true">
         <ion-label range-left>1</ion-label>
         <ion-label range-right>20</ion-label>
       </ion-range>

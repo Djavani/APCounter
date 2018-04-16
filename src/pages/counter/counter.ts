@@ -1,32 +1,32 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { Storage } from '@ionic/storage';
+import { LocalStorageService } from './../../app/services/localStorageService';
+import { ActionPointStorage } from '../../app/util/ActionPoint';
+import { ActionPoint } from './../../app/model/actionPoint';
 
 @IonicPage()
 @Component({
   selector: 'page-counter',
   templateUrl: 'counter.html',
+  providers: [
+    LocalStorageService
+  ]
 })
 export class CounterPage {
 
-  public valorPA = null;
-  public isOrderAsc: true;
+  public actionPoint;
 
   constructor(  
     public navCtrl: NavController, 
-    public navParams: NavParams,
-    private storage: Storage) {
+    public navParams: NavParams,    
+    private localStorageService : LocalStorageService) {
+      this.actionPoint = this.localStorageService.getActionPoint()
   }
 
-  ionViewDidLoad() {    
-    this.storage.get('valorPA').then((val) => {
-      this.valorPA = val;
-    });
-    this.storage.get('isOrderAsc').then((val) => {
-      this.isOrderAsc = val;
-    });
-
+  ionViewDidLoad() {   
+    
+    
   }
 
 }

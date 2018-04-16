@@ -2,30 +2,44 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
+import { LocalStorageService } from './../../app/services/localStorageService'
+import { ActionPointStorage } from '../../app/util/ActionPoint';
+import { ActionPoint } from './../../app/model/actionPoint';
 
 @IonicPage()
 @Component({
   selector: 'page-config',
   templateUrl: 'config.html',
+  providers: [
+    LocalStorageService
+  ]  
 })
 export class ConfigPage {
   
-  public valorPA = null;
-  public isOrderAsc: true;
+  /* public valorPA = null;
+  public isOrderAsc: true; */
+
+  actionPoint = new ActionPoint();
+  public actionPoint2;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private alertCtrl: AlertController,
-    private storage: Storage) {
+    private storage: Storage,
+  
+    private storageService: LocalStorageService,
+    private localStorageService : LocalStorageService) {
+      this.actionPoint2 = this.localStorageService.getActionPoint()
   }
 
   ionViewDidLoad() {
     this.limparFiltro();
+    
   }
 
   validarPA() {
-    if(this.valorPA <= 0 || this.valorPA > 20) {
+    if(this.actionPoint2.valorPA <= 0 || this.actionPoint2.valorPA > 20) {
       this.exibirMensagem('Atenção', 'Escolha um valor de 1 até 20 para os pontos de ação')
       this.limparFiltro();
     }
@@ -43,27 +57,17 @@ export class ConfigPage {
   }
 
   limparFiltro(): void {
-    this.valorPA = null;
-    this.isOrderAsc = true;
+    this.actionPoint.valorPA = null;
+    this.actionPoint.isOrderAsc = true;
   }
 
-  gravarConfig(): void {    
-    // set a key/value
-    this.storage.set('valorPA', this.valorPA);
-    this.storage.set('isOrderAsc', this.isOrderAsc);
-
-    // Or to get a key/value pair
-    this.storage.get('valorPA').then((val) => {
-      //console.log('Valor gravado para PA: ', val);
-    });
-
-    this.storage.get('isOrderAsc').then((val) => {
-      //console.log('Ordenar Crescente ? ', val);
-    });
+  gravarConfig(): void {  
+    
+    this.storageService.setActionPoint(this.actionPoint2);
 
     this.exibirMensagem('OK', 
-    `Valores salvos com sucesso: ${this.valorPA} pontos de ação,
-     e ordem de exibição ${this.isOrderAsc? 'crescente' : 'descrescente'}.`);
+    `Valores salvos com sucesso: ${this.actionPoint2.valorPA} pontos de ação,
+     e ordem de exibição ${this.actionPoint2.isOrderAsc? 'crescente' : 'descrescente'}.`);
   }
 
 }
