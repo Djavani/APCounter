@@ -1,25 +1,40 @@
 import { Injectable } from "@angular/core";
-import { LocalActionPoint } from './../util/local-storage-actionPoint'
-import { ActionPointStorage } from './../util/ActionPoint'
-import { STORAGE_KEYS } from './../util/local-storage-keys-config';
 import { ActionPoint } from './../model/actionPoint';
+import { Storage } from '@ionic/storage';
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class LocalStorageService {
     
-    constructor() {
+    constructor(private storage: Storage) { }
 
-    }
-
-    getActionPoint() : LocalActionPoint {
-        let actionPoint = localStorage.getItem(STORAGE_KEYS.localUserActionPoint);
-        return JSON.parse(actionPoint);
+    getValorPA() {
+        //let valorPa: string;
+        this.storage.get('valorPA').then(value => {
+            //valorPa = value;            
+            //console.log('valorPA:', value);            
+            return value
+        })        
     }
    
-    setActionPoint(actionPoint: ActionPoint) {
-        let localActionPoint = {
-            actionPoint : actionPoint
-        }       
-        localStorage.setItem(STORAGE_KEYS.localUserActionPoint, JSON.stringify(actionPoint));
-    } 
+    setValorPA(valorPA: string) {
+        this.storage.set('valorPA', valorPA )
+    }
+    
+    getOrderAsc() {
+        this.storage.get('isOrderAsc').then(value => {
+            console.log('isOrderAsc:', value);
+            //return value;
+        })
+    }
+
+    setOrderAsc(isOrderAsc: boolean) {
+        this.storage.set('isOrderAsc', isOrderAsc);
+    }
+
+    clearStorage() {
+        this.storage.clear().then(() => {
+            
+        })
+    }
 }

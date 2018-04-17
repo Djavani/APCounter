@@ -1,49 +1,37 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, AlertController, Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { LocalStorageService } from './../../app/services/localStorageService'
-import { ActionPointStorage } from '../../app/util/ActionPoint';
-import { ActionPoint } from './../../app/model/actionPoint';
+import { LocalStorageService } from '../../app/services/localStorageService'
 
 @IonicPage()
 @Component({
   selector: 'page-config',
-  templateUrl: 'config.html',
-  providers: [
-    LocalStorageService
-  ]  
+  templateUrl: 'config.html'
 })
 export class ConfigPage {
   
-  /* public valorPA = null;
-  public isOrderAsc: true; */
-
-  actionPoint = new ActionPoint();
-  public actionPoint2;
+  public valorPA : any;
+  public isOrderAsc : any;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private alertCtrl: AlertController,
-    private storage: Storage,
-  
-    private storageService: LocalStorageService,
-    private localStorageService : LocalStorageService) {
-      this.actionPoint2 = this.localStorageService.getActionPoint()
-  }
+    private storageService : LocalStorageService,
+    private storage: Storage) { }
 
-  ionViewDidLoad() {
+  ionViewDidLoad() {    
     this.limparFiltro();
-    
+    this.recuperarConfig();    
   }
 
-  validarPA() {
-    if(this.actionPoint2.valorPA <= 0 || this.actionPoint2.valorPA > 20) {
+  validarPA() {    
+    if(this.valorPA <= 0 || this.valorPA > 20) {
       this.exibirMensagem('Atenção', 'Escolha um valor de 1 até 20 para os pontos de ação')
-      this.limparFiltro();
+      //this.limparFiltro();      
+    }else {
+      this.gravarConfig();
     }
-    this.gravarConfig();
     
   }
 
@@ -57,17 +45,37 @@ export class ConfigPage {
   }
 
   limparFiltro(): void {
-    this.actionPoint.valorPA = null;
-    this.actionPoint.isOrderAsc = true;
+    this.valorPA = null;
+    this.isOrderAsc = true;
   }
 
-  gravarConfig(): void {  
+  gravarConfig() {  
     
-    this.storageService.setActionPoint(this.actionPoint2);
+    this.storageService.setValorPA(this.valorPA);
+    this.storageService.setOrderAsc(this.isOrderAsc);
 
     this.exibirMensagem('OK', 
-    `Valores salvos com sucesso: ${this.actionPoint2.valorPA} pontos de ação,
-     e ordem de exibição ${this.actionPoint2.isOrderAsc? 'crescente' : 'descrescente'}.`);
+    `Valores salvos com sucesso: ${this.valorPA} pontos de ação,
+     e ordem de exibição ${this.isOrderAsc? 'crescente' : 'descrescente'}.`);
+  }
+
+  recuperarConfig() {
+    this.getValorPA()
+    this.getOrderAsc();
+    
+  }
+  getValorPA(){        
+    this.storage.get('valorPA').then(value => {
+      this.valorPA = value;
+    })
+    
+  }
+  
+  getOrderAsc() {  
+    this.storage.get('isOrderAsc').then(value => {
+    this.isOrderAsc = value
+    })
+   
   }
 
 }

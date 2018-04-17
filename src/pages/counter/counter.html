@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CounterPage</ion-title>
+    <ion-title>Contador de PA</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -14,16 +14,36 @@
       <ion-col>      
         <ion-item>
           <ion-label floating>Pontos de ação:</ion-label>
-          <ion-input disabled="true" [ngModel]="actionPoint.valorPA" type="text" class="centralizado"></ion-input>
+          <ion-input disabled="true" [ngModel]="valorPA" type="text" class="centralizado"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
       <ion-item>
         <ion-label floating>Contagem</ion-label>
-        <ion-input disabled="true" [ngModel]="actionPoint.isOrderAsc? 'Crescente' : 'Descrescente'" type="text"></ion-input>
+        <ion-input disabled="true" [ngModel]="isOrderAsc? 'Crescente' : 'Descrescente'" type="text"></ion-input>
       </ion-item>
     </ion-col>
     </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 class="contador">{{ valorPA }}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6> 
+            <button ion-button block>
+                <ion-icon name="ios-arrow-dropleft-outline"></ion-icon>                
+            </button>
+        </ion-col>
+        <ion-col col-6>
+            <button ion-button block>
+                <ion-icon name="ios-arrow-dropright-outline"></ion-icon>                
+            </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-fab position="bottom">
+      <button ion-fab color="danger">Resetar</button>
+    </ion-fab>
   
   </ion-list>
 </ion-content>
