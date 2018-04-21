@@ -86,3 +86,9 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+ion-app.md [padding] {
+  padding: 0px;
+  background-image: url('../assets/imgs/bg.png');
+  background-size: cover;
+}

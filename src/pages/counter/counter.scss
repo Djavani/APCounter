@@ -1,4 +1,9 @@
 page-counter {
+
+  ion-content{
+    background-image: url('assets/imgs/bg.png');
+  }
+
     .centralizado {
         text-align: center;
         font-size: large;
@@ -9,4 +14,10 @@ page-counter {
         color: crimson;
         text-shadow: 3px 2px black;
     }
+}
+
+
+
+.botao {
+  width: 145px;
 }
