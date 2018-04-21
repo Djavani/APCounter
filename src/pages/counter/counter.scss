@@ -1,19 +1,40 @@
 page-counter {
 
-  ion-content{
-    background-image: url('assets/imgs/bg.png');
+  .texto-branco {
+    color: white;
+    text-shadow: 2px 2px black;
   }
 
-    .centralizado {
-        text-align: center;
-        font-size: large;
-    }
-    .contador {
-        text-align: center;
-        font-size: 150px;
-        color: crimson;
-        text-shadow: 3px 2px black;
-    }
+  .botaoDown {
+    box-shadow: inset 2px -2px black;
+  }
+
+  .botaoUp {
+    box-shadow: inset -2px -2px black;
+  }
+
+  .centralizado {
+    text-align: center;
+    font-size: large;
+  }
+
+  .contador {
+    text-align: center;
+    font-size: 150px;
+    color: crimson;
+    text-shadow: 3px 2px black;
+  }
+
+  .alinhamento-contador {
+    margin-top: 20px;
+  }
+
+  .imagem-meeple {
+    background-image: url('../../assets/imgs/meeple.jpg') !important;
+    //opacity: 0.5;
+    background-size: cover;
+    background-position: center;
+  }
 }
 
 

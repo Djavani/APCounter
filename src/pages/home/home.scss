@@ -1,3 +1,20 @@
 page-home {
 
+  .imagem-meeple {
+    background-image: url('../../assets/imgs/meeple.jpg') !important;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .msgInicio {
+    box-shadow: 3px 3px 3px 2px black;
+    background-position: bottom;
+    margin-top: 310px;
+  }
+
+  .textoCinza {
+    color: rgb(220, 220, 220);
+    text-shadow: 2px 1px black;
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LocalStorageService } from './../../app/services/localStorageService';
 import { Storage } from '@ionic/storage';
@@ -24,9 +24,7 @@ export class CounterPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private alertCtrl: AlertController,
     private toastCtrl: ToastController,
-    private storageService: LocalStorageService,
     private storage: Storage) {
   }
 
