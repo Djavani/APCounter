@@ -4,12 +4,12 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="imagem-meeple">
-  <ion-list >
-    <ion-row>
-      <ion-col class="texto-branco">
+<ion-content padding class="bg-image">
+  <ion-list>
+    <ion-row class="bg texto-branco">
+      <ion-col>
         <h3>Pontos de Ação: {{valorPA}} </h3>
-        <h3>Ordem de contagem: {{isOrderAsc? 'Crescente' : 'Descrescente'}} </h3>
+        <h4>Ordem de contagem: {{isOrderAsc? 'Crescente' : 'Descrescente'}} </h4>
         <hr>
       </ion-col>
     </ion-row>
@@ -22,7 +22,7 @@
           <ion-col col-6>
             <ion-buttons start>
               <button ion-button
-                class="botao botaoDown"
+                class="botao botaoDown bg"
                 icon-only large
                 (click)='usarPontoDeAcao("down")'
                 [disabled]="isDisabledButtonDown">
@@ -33,7 +33,7 @@
           <ion-col col-6>
             <ion-buttons end>
               <button ion-button
-                class="botao botaoUp"
+                class="botao botaoUp bg"
                 icon-only large
                 (click)='usarPontoDeAcao("up")'
                 [disabled]="isDisabledButtonUp">

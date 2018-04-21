@@ -29,9 +29,15 @@ page-counter {
     margin-top: 20px;
   }
 
-  .imagem-meeple {
-    background-image: url('../../assets/imgs/meeple.jpg') !important;
-    //opacity: 0.5;
+  .bg-image {
+    background-image: url('../assets/imgs/meeple.jpg') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .bg {
+    background-image: url('../assets/imgs/bg.png') !important;
     background-size: cover;
     background-position: center;
   }

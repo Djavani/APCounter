@@ -3,4 +3,11 @@ page-config {
         text-align: center;
         font-size: large;
     }
+
+    .bg-image {
+      background-image: url('../assets/imgs/bg.png') !important;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
 }

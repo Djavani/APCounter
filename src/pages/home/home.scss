@@ -1,7 +1,14 @@
 page-home {
 
-  .imagem-meeple {
-    background-image: url('../../assets/imgs/meeple.jpg') !important;
+  .bg-image {
+    background-image: url('../assets/imgs/meeple.jpg') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .bg {
+    background-image: url('../assets/imgs/bg.png') !important;
     background-size: cover;
     background-position: center;
   }
@@ -9,7 +16,7 @@ page-home {
   .msgInicio {
     box-shadow: 3px 3px 3px 2px black;
     background-position: bottom;
-    margin-top: 310px;
+    margin-top: 150px;
   }
 
   .textoCinza {

@@ -1,13 +1,11 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Configurações</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="bg-image">
   <ion-list>
     <ion-item>
       <ion-label> Ordem de contagem Crescente</ion-label>
@@ -15,7 +13,7 @@
     </ion-item>
     <ion-item>
       <ion-label floating>Quantidade de Pontos de Ação</ion-label>
-      <ion-input text-center 
+      <ion-input text-center
         type="number" min="1" max="20" [(ngModel)]="valorPA"></ion-input>
     </ion-item>
     <ion-item>
@@ -24,9 +22,8 @@
         <ion-label range-right>20</ion-label>
       </ion-range>
     </ion-item>
-  
-    <button ion-button full (click)="validarPA()">Enviar</button>
-  
+    <button ion-button block color="danger"icon-right (click)="validarPA()">
+        Salvar
+    </button>
   </ion-list>
-
 </ion-content>
